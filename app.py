@@ -37,7 +37,6 @@ def main_app():
     
     # Your main application logic here
     st.write("Visit the main application at [https://spulflaskt05df.vercel.app](https://spulflaskt05df.vercel.app)")
-    /
     #st.write("You are logged in and can now use the app.")
     if st.button("Log out"):
         st.session_state.clear()  # Clear session state on logout
