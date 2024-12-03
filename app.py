@@ -1,7 +1,21 @@
 import streamlit as st
+import os
 
-# Access credentials securely from secrets.toml
-USER_CREDENTIALS = st.secrets["credentials"]
+# Access credentials from st.secrets for Streamlit Cloud or Vercel (if available)
+try:
+    USER_CREDENTIALS = {
+        "user5a": st.secrets["user5a"],
+        "user5b": st.secrets["user5b"],
+        "user5c": st.secrets["user5c"],
+        "user5t": st.secrets["user5t"],
+        "user6a": st.secrets["user6a"],
+        "user6b": st.secrets["user6b"],
+        "user6c": st.secrets["user6c"],
+        "user6t": st.secrets["user6t"]
+    }
+except KeyError as e:
+    st.error(f"Error: {e}. Please check your secrets configuration.")
+    st.stop()  # Stop the app execution if secrets are not found
 
 def login():
     """Function to handle user login"""
@@ -12,7 +26,7 @@ def login():
         st.success(f"Welcome, {st.session_state['username']}!")
         # Redirect to the Vercel URL after successful login
         st.experimental_rerun()  # Rerun to load the main app
-        st.experimental_redirect("https://001.vercel.app")
+        st.experimental_redirect("https://spulflaskt05df.vercel.app")
         return True
 
     # Display login form
