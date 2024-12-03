@@ -36,8 +36,13 @@ def main_app():
     st.title("Main Application")
     
     # Your main application logic here
-    st.write("Visit the main application at [https://spulflaskt05df.vercel.app](https://spulflaskt05df.vercel.app)")
+    #st.write("Visit the main application at [https://spulflaskt05df.vercel.app](https://spulflaskt05df.vercel.app)")
     #st.write("You are logged in and can now use the app.")
+
+    # After successful login
+    st.experimental_rerun()  # Rerun the app (you can replace this with actual logic)
+    st.experimental_redirect("https://spulflaskt05df.vercel.app")
+    
     if st.button("Log out"):
         st.session_state.clear()  # Clear session state on logout
         st.experimental_rerun()  # Rerun to go back to login page
