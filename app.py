@@ -2,8 +2,8 @@ import streamlit as st
 
 # Hardcoded list of users (for demonstration purposes)
 USERS = {
-    "user1": "password1",
-    "user2": "password2",
+    "user1": "pass12345",
+    "user2": "pass54321",
 }
 
 def login():
@@ -36,7 +36,9 @@ def main_app():
     st.title("Main Application")
     
     # Your main application logic here
-    st.write("You are logged in and can now use the app.")
+    st.write("Visit the main application at [https://spulflaskt05df.vercel.app](https://spulflaskt05df.vercel.app)")
+    /
+    #st.write("You are logged in and can now use the app.")
     if st.button("Log out"):
         st.session_state.clear()  # Clear session state on logout
         st.experimental_rerun()  # Rerun to go back to login page
