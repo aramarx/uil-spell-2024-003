@@ -1,0 +1,3 @@
+streamlit
+Flask==3.0.3
+requests==2.28.1  # To make HTTP requests for fetching definitions and example sentence
