@@ -6,14 +6,14 @@ def get_secret(key, default=None):
 
 # Access credentials securely from st.secrets (with safe fallback)
 USER_CREDENTIALS = {
-    "user5a": get_secret("user5a"),
-    "user5b": get_secret("user5b"),
-    "user5c": get_secret("user5c"),
-    "user5t": get_secret("user5t"),
-    "user6a": get_secret("user6a"),
-    "user6b": get_secret("user6b"),
-    "user6c": get_secret("user6c"),
-    "user6t": get_secret("user6t"),
+    "user5a": st.secrets["user5a"],
+    "user5b": st.secrets["user5b"],
+    "user5c": st.secrets["user5c"],
+    "user5t": st.secrets["user5t"],
+    "user6a": st.secrets["user6a"],
+    "user6b": st.secrets["user6b"],
+    "user6c": st.secrets["user6c"],
+    "user6t": st.secrets["user6t"]
 }
 
 # Check if any secret is missing
