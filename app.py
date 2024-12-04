@@ -1,21 +1,26 @@
 import streamlit as st
-import os
 
-# Access credentials from st.secrets for Streamlit Cloud or Vercel (if available)
-try:
-    USER_CREDENTIALS = {
-        "user5a": st.secrets["user5a"],
-        "user5b": st.secrets["user5b"],
-        "user5c": st.secrets["user5c"],
-        "user5t": st.secrets["user5t"],
-        "user6a": st.secrets["user6a"],
-        "user6b": st.secrets["user6b"],
-        "user6c": st.secrets["user6c"],
-        "user6t": st.secrets["user6t"]
-    }
-except KeyError as e:
-    st.error(f"Error: {e}. Please check your secrets configuration.")
-    st.stop()  # Stop the app execution if secrets are not found
+# Function to safely access secrets with a fallback if a key doesn't exist
+def get_secret(key, default=None):
+    return st.secrets.get(key, default)
+
+# Access credentials securely from st.secrets (with safe fallback)
+USER_CREDENTIALS = {
+    "user5a": get_secret("user5a"),
+    "user5b": get_secret("user5b"),
+    "user5c": get_secret("user5c"),
+    "user5t": get_secret("user5t"),
+    "user6a": get_secret("user6a"),
+    "user6b": get_secret("user6b"),
+    "user6c": get_secret("user6c"),
+    "user6t": get_secret("user6t"),
+}
+
+# Check if any secret is missing
+missing_secrets = [key for key, value in USER_CREDENTIALS.items() if value is None]
+if missing_secrets:
+    st.error(f"Missing secrets: {', '.join(missing_secrets)}. Please check your secrets configuration.")
+    st.stop()
 
 def login():
     """Function to handle user login"""
